@@ -2,7 +2,7 @@ function clickEvent(id){
   $(id).click(function(){
     $.ajax({
       type: "POST",
-      url: "https://coherence.nitred,com/api/clickEvent",
+      url: "http://139.59.24.127:8080/api/clickEvent",
       contentType: "application/json; charset=utf-8",
       data: JSON.stringify({"click":id}),
       success: function(data){console.log(data);},
@@ -19,14 +19,14 @@ function registerUserAndCookie(button_id, input_id){
     console.log("Registering", cookie_id, name)
     $.ajax({
       type: "POST",
-      url: "https://coherence.nitred,com/api/registerUserAndCookie",
+      url: "http://139.59.24.127:8080/api/registerUserAndCookie",
       contentType: "application/json; charset=utf-8",
       data: JSON.stringify({"name":name, "cookie_id": cookie_id}),
       success: function(data){
         console.log(data);
         Cookies.set("coherence", {"cookie_id": cookie_id, "name": name})
         setTimeout(function(){
-          window.location.href = "https://coherence.nitred,com/page1.html";
+          window.location.href = "http://139.59.24.127:8080/page1.html";
         }, 1200);
       },
       dataType: "json"
@@ -39,7 +39,7 @@ function registerUserAndCookie(button_id, input_id){
 function registerAction(cookie_id, action, details){
   $.ajax({
     type: "POST",
-    url: "https://coherence.nitred,com/api/registerAction",
+    url: "http://139.59.24.127:8080/api/registerAction",
     contentType: "application/json; charset=utf-8",
     data: JSON.stringify({"cookie_id": cookie_id, "action":action, "details":details}),
     success: function(data){
@@ -64,7 +64,7 @@ function listenClickAction(button_id){
 function getAllPaths() {
   $.ajax({
     type: "POST",
-    url: "https://coherence.nitred,com/api/getAllPaths",
+    url: "http://139.59.24.127:8080/api/getAllPaths",
     contentType: "application/json; charset=utf-8",
     data: null,
     success: function(data){
