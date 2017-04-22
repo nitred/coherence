@@ -119,7 +119,7 @@ def getAllPaths():
 
 if __name__ == "__main__":
     try:
-        http_server = WSGIServer(('0.0.0.0', 8080), app)
+        http_server = WSGIServer(('0.0.0.0', 80), app)
         http_server.serve_forever()
     except Exception as exc:
         print(exc)
