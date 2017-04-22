@@ -1,0 +1,36 @@
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="js/events.js"></script>
+  <script src="js/js.cookie.js"></script>
+
+  <script>
+  $(document).ready(function(){
+    cookie = Cookies.getJSON('coherence')
+    if (cookie === undefined) {
+      console.log("No Cookie - Redirecting to New User");
+      window.location.href = "https://coherence.nitred.com/new_user.html";
+    }
+    else{
+      console.log("Yes Cookie - Checking for UserID");
+      console.log("cookie", cookie);
+      if("name" in cookie) {
+        console.log("User exists, redirecting to page1.html")
+        window.location.href = "https://coherence.nitred.com/page1.html";
+      }
+      else {
+        console.log("User doesn't exist, redirecting to new_user.html")
+        window.location.href = "https://coherence.nitred.com/new_user.html";
+      }
+    }
+  })
+
+  </script>
+
+</head>
+
+<body>
+</body>
+
+
+</html>

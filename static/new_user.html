@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="js/events.js"></script>
+    <script src="js/js.cookie.js"></script>
+    <script>
+      $(document).ready(function(){
+        cookie = Cookies.getJSON('coherence')
+        if (cookie === undefined) {
+          console.log("No Cookie - Generating new cookie_id");
+          cookie_id = 1 + Math.floor(Math.random() * 10000);
+          console.log("cookie_id", cookie_id);
+          Cookies.set("coherence", {"cookie_id":cookie_id})
+          console.log("Generated cookie");
+          // console.log("Generated cookie - Registering Cookie");
+          // registerCookie(cookie_id);
+          console.log("Waiting for user to click submit");
+        }
+        else {
+          console.log("Yes Cookie - Waiting for user to click submit");
+          cookie_id = cookie["cookie_id"]
+          console.log("cookie_id", cookie_id);
+        }
+      });
+    </script>
+  </head>
+
+  <body>
+    <div>
+      <h1>Welcome, new user!</h1>
+      <h3>Enter your name and click on Submit to be tracked!</h3>
+    </div>
+
+    <div>
+      <form id="form-name">
+        Name:<br>
+        <input id="input-name" type="text" name="Name" value="Anonymous">
+        <input id="input-submit" type="submit" value="Submit">
+      </form>
+    </div>
+
+    <script>
+      // registerUser("#input-submit", "#input-name")
+      registerUserAndCookie("#input-submit", "#input-name")
+    </script>
+  </body>
+</html>
